@@ -1,2 +1,2 @@
 This is my portfolio website... 
-Explore me: https://swapnik-iitkgp.github.io/
+Explore me: https://swapnik-iitkgp.github.io/my-portfolio/
