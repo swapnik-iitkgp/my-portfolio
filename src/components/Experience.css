@@ -1,0 +1,37 @@
+/* Experience.css */
+.experience {
+  padding: 20px;
+}
+
+.experience h2 {
+  font-size: 2em;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.experience-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.experience-item {
+  display: flex;
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin-bottom: 15px;
+  width: 80%;
+  max-width: 600px;
+}
+
+.experience-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.experience-image {
+  width: 100px;
+  height: auto;
+  margin-right: 20px;
+}
