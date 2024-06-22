@@ -15,7 +15,6 @@ const Header = () => {
     <header className="header">
       <nav className="navbar">
         <ul>
-          <li><Link to="/" onClick={() => scrollToSection('home')}>Home</Link></li>
           <li><Link to="/" onClick={() => scrollToSection('about')}>About</Link></li>
           <li><Link to="/" onClick={() => scrollToSection('projects')}>Projects</Link></li>
           <li><Link to="/" onClick={() => scrollToSection('experience')}>Experience</Link></li>
