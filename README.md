@@ -1,3 +1,3 @@
 This is my portfolio website... 
-\nExplore me: https://swapnik-iitkgp.github.io/my-portfolio/
+Explore me: https://swapnik-iitkgp.github.io/my-portfolio/
 Click here: https://www.swapnikvarala.in
