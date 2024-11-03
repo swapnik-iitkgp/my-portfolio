@@ -1,97 +1,103 @@
-import React from 'react';
-import { Link } from 'react-scroll';
+import React, { useState, useEffect } from 'react';
+import { FaBars, FaTimes } from 'react-icons/fa';
 import { motion } from 'framer-motion';
-import { useTheme } from '../../context/ThemeContext';
 
 const Navbar = () => {
-  const { isDark, toggleTheme } = useTheme();
-  
-  const navLinks = [
-    { to: 'home', label: 'Home', icon: '🏠' },
-    { to: 'about', label: 'About', icon: '👤' },
-    { to: 'education', label: 'Education', icon: '🎓' },
-    { to: 'internships', label: 'Internships', icon: '💼' },
-    { to: 'projects', label: 'Projects', icon: '🔬' },
-    { to: 'skills', label: 'Skills', icon: '⚡' },
-    { to: 'contact', label: 'Contact', icon: '📧' }
+  const [navOpen, setNavOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  const scrollToSection = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      const offset = element.offsetTop - 70;
+      window.scrollTo({
+        top: offset,
+        behavior: 'smooth',
+      });
+    }
+    setNavOpen(false); // Close the nav menu on mobile after clicking
+  };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const navItems = [
+    { id: 'about', label: 'About' },
+    { id: 'news', label: 'News' },
+    { id: 'publications', label: 'Publications' },
+    { id: 'experience', label: 'Experience' },
+    { id: 'projects', label: 'Projects' },
+    { id: 'contact', label: 'Contact' },
   ];
 
   return (
-    <motion.nav 
-      className="fixed w-full bg-white dark:bg-gray-800 shadow-md backdrop-blur-sm bg-opacity-80 dark:bg-opacity-80 z-50"
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.5 }}
+    <nav
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+        scrolled ? 'bg-gray-800 shadow-lg' : 'bg-transparent'
+      }`}
     >
-      {/* Rest of the navbar code remains the same */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16">
-          <div className="flex-1 flex items-center justify-start">
-            <span className="text-blue-600 dark:text-blue-400 font-bold text-xl">NS</span>
-          </div>
-
-          <div className="hidden md:flex flex-1 items-center justify-center">
-            <div className="flex space-x-4">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.to}
-                  to={link.to}
-                  smooth={true}
-                  duration={500}
-                  className="flex items-center px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300 cursor-pointer"
-                >
-                  <span className="mr-2">{link.icon}</span>
-                  <span>{link.label}</span>
-                </Link>
-              ))}
-            </div>
-          </div>
-
-          <div className="flex-1 flex items-center justify-end">
-            <button 
-              onClick={toggleTheme}
-              className="p-2 rounded-full text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-300 group relative"
-              aria-label="Toggle theme"
-            >
-              <motion.span 
-                className={`text-xl absolute ${isDark ? 'opacity-100' : 'opacity-0'}`}
-                initial={false}
-                animate={{ rotate: isDark ? 0 : 180, opacity: isDark ? 1 : 0 }}
-                transition={{ duration: 0.3 }}
-              >
-                ☀️
-              </motion.span>
-              <motion.span 
-                className={`text-xl absolute ${!isDark ? 'opacity-100' : 'opacity-0'}`}
-                initial={false}
-                animate={{ rotate: !isDark ? 0 : -180, opacity: !isDark ? 1 : 0 }}
-                transition={{ duration: 0.3 }}
-              >
-                🌙
-              </motion.span>
-              <span className="text-xl invisible">🌙</span>
-            </button>
-          </div>
+      <div className="max-w-7xl mx-auto px-4 flex items-center justify-between h-16">
+        {/* Brand Name */}
+        <div className="flex-shrink-0">
+          <h1
+            className="text-2xl font-bold cursor-pointer text-white select-none"
+            onClick={() => scrollToSection('home')}
+          >
+            My Portfolio
+          </h1>
         </div>
-
-        <div className="md:hidden">
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            {navLinks.map((link) => (
-              <Link
-                key={link.to}
-                to={link.to}
-                smooth={true}
-                duration={500}
-                className="flex items-center px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300 cursor-pointer"
+        {/* Desktop Menu */}
+        <div className="hidden md:flex">
+          <ul className="flex space-x-6">
+            {navItems.map((item) => (
+              <li
+                key={item.id}
+                className="cursor-pointer text-white hover:text-blue-500 transition-colors duration-300 select-none"
+                onClick={() => scrollToSection(item.id)}
               >
-                <span className="mr-2">{link.icon}</span>
-                <span>{link.label}</span>
-              </Link>
+                {item.label}
+              </li>
             ))}
-          </div>
+          </ul>
+        </div>
+        {/* Mobile Menu Button */}
+        <div className="md:hidden flex items-center">
+          <button
+            onClick={() => setNavOpen(!navOpen)}
+            className="text-white focus:outline-none"
+            aria-label="Toggle navigation menu"
+          >
+            {navOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+          </button>
         </div>
       </div>
-    </motion.nav>
+      {/* Mobile Menu */}
+      {navOpen && (
+        <motion.div
+          className="md:hidden bg-gray-900"
+          initial={{ height: 0 }}
+          animate={{ height: 'auto' }}
+          transition={{ duration: 0.3 }}
+        >
+          <ul className="flex flex-col items-center py-4 space-y-4">
+            {navItems.map((item) => (
+              <li
+                key={item.id}
+                className="cursor-pointer text-white hover:text-blue-500 transition-colors duration-300 select-none"
+                onClick={() => scrollToSection(item.id)}
+              >
+                {item.label}
+              </li>
+            ))}
+          </ul>
+        </motion.div>
+      )}
+    </nav>
   );
 };
 
