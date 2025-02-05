@@ -4,11 +4,20 @@ import React from 'react';
 
 const publicationsData = [
   {
+    title: "Federated Unlearning via Subparameter Space Partitioning and Selective Freezing",
+    journal: "AAAI Workshop on Datasets and Evaluators of AI Safety",
+    year: "2025",
+    status: "Accepted",
+    description: "This paper explores a federated unlearning method to forget few concepts from the clients.",
+    link: "https://example.com/publication1",
+    image: `${process.env.PUBLIC_URL}/media/images/publication1.jpg`, // Replace with the actual image path
+  },
+  {
     title: "Adaptive Federated Gradient Reparameterization for Effective Intrusion Detection in Non-IID Settings",
-    journal: "NeurIPS AFM Workshop",
+    journal: "NeurIPS Workshop on Adaptive Foundation Models",
     year: "2024",
     status: "Pre-print",
-    description: "This paper explores machine learning models to predict material properties and enhance material discovery.",
+    description: "This paper explores our adpative aggregation method FedGRAA to overcome data heterogeneity.",
     link: "https://example.com/publication1",
     image: `${process.env.PUBLIC_URL}/media/images/publication1.jpg`, // Replace with the actual image path
   },
