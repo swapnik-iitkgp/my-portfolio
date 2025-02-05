@@ -3,23 +3,23 @@
 import React from 'react';
 
 // Merged data for a single timeline
-const newsData = [
-  {
-    date: "Jun '24",
-    title: "Manuscript on Adaptive Dynamics Optimization for Autonomous Driving submitted to",
-    link: "https://corl2024.org",
-    linkText: "CoRL 2024",
-  },
-  {
-    date: "May '24",
-    title: "Work on Entity Augmentation for Vertical Federated Learning accepted at the GLOW Workshop at",
-    link: "https://ijcai2024.org",
-    linkText: "IJCAI 2024",
-  },
-  {
-    date: "Dec '23",
-    title: "Secured 1st position at the Inter IIT Tech Meet 2023 in the event 'Adobe Behavior Simulation Challenge'.",
-  },
+// const newsData = [
+//   {
+//     date: "Jun '24",
+//     title: "Manuscript on Adaptive Dynamics Optimization for Autonomous Driving submitted to",
+//     link: "https://corl2024.org",
+//     linkText: "CoRL 2024",
+//   },
+  // {
+  //   date: "May '24",
+  //   title: "Work on Entity Augmentation for Vertical Federated Learning accepted at the GLOW Workshop at",
+  //   link: "https://ijcai2024.org",
+  //   linkText: "IJCAI 2024",
+  // // },
+  // {
+  //   date: "Dec '23",
+  //   title: "Secured 1st position at the Inter IIT Tech Meet 2023 in the event 'Adobe Behavior Simulation Challenge'.",
+  // },
   {
     date: "Apr '23",
     title: "Selected as a Research Intern at IIT Hyderabad",
@@ -27,14 +27,19 @@ const newsData = [
   },
   {
     date: "Feb '23",
-    title: "Paper Accepted at IEEE Conference",
-    description: "My research on NLP resource sequencing for e-learning was accepted at the IEEE Conference on Learning Technologies.",
+    title: "Selected as a Research Intern at IIT Kharagpur",
+    description: "I was selected for a research internship focusing on automatic resource sequencing for e-learning.",
   },
-  {
-    date: "Jun '22",
-    title: "Awarded Best Project at University Science Fair",
-    description: "Received the Best Project award for my gesture-controlled system development project.",
-  },
+  // {
+  //   date: "Feb '23",
+  //   title: "Paper Accepted at IEEE Conference",
+  //   description: "My research on NLP resource sequencing for e-learning was accepted at the IEEE Conference on Learning Technologies.",
+  // },
+  // {
+  //   date: "Jun '22",
+  //   title: "Awarded Best Project at University Science Fair",
+  //   description: "Received the Best Project award for my gesture-controlled system development project.",
+  // },
   // Add more items as needed
 ];
 
